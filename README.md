@@ -23,7 +23,8 @@ Aplikasi web CRUD sederhana untuk mengelola proses peminjaman buku di perpustaka
 
 <img width="1919" height="944" alt="image" src="https://github.com/user-attachments/assets/2d5b71b3-1661-4019-8012-23815f09d020" />
 <img width="1919" height="941" alt="image" src="https://github.com/user-attachments/assets/9395ef1a-84fb-469c-8a9a-36cbc4689828" />
-<img width="1917" height="938" alt="image" src="https://github.com/user-attachments/assets/7d116af2-17d4-456a-931b-240411c4d730" />
+<img width="1919" height="950" alt="image" src="https://github.com/user-attachments/assets/158b5426-eb4c-46ee-b3f7-1d3009db3183" />
+
 
 ## 🛠️ Tech Stack
 
