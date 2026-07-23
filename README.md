@@ -25,11 +25,6 @@ Aplikasi web CRUD sederhana untuk mengelola proses peminjaman buku di perpustaka
 <img width="1919" height="941" alt="image" src="https://github.com/user-attachments/assets/9395ef1a-84fb-469c-8a9a-36cbc4689828" />
 <img width="1917" height="938" alt="image" src="https://github.com/user-attachments/assets/7d116af2-17d4-456a-931b-240411c4d730" />
 
-
-| Daftar Peminjaman | Tambah Peminjaman |
-|---|---|
-| ![Daftar Peminjaman](docs/screenshots/index-peminjaman.png) | ![Tambah Peminjaman](docs/screenshots/create-peminjaman.png) |
-
 ## 🛠️ Tech Stack
 
 - **Backend:** Laravel 10 (PHP 8.2)
