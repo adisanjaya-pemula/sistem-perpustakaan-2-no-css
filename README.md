@@ -1,58 +1,113 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# 📚 Sistem Peminjaman Perpustakaan
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+![PHP](https://img.shields.io/badge/PHP-8.2-777BB4?style=flat&logo=php)
+![Laravel](https://img.shields.io/badge/Laravel-10-FF2D20?style=flat&logo=laravel)
+![MySQL](https://img.shields.io/badge/MySQL-8.0-4479A1?style=flat&logo=mysql&logoColor=white)
+![License](https://img.shields.io/badge/license-MIT-green)
 
-## About Laravel
+Aplikasi web CRUD sederhana untuk mengelola proses peminjaman buku di perpustakaan, dibangun dengan **Laravel** dan **MySQL**. Project ini dibuat untuk melatih penerapan konsep MVC, relasi database, serta business logic sederhana (pengelolaan stok otomatis).
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## ✨ Fitur
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- **Manajemen Buku** — tambah, lihat, ubah, hapus data buku beserta stoknya
+- **Manajemen Anggota** — data anggota perpustakaan
+- **Transaksi Peminjaman**
+  - Buku dengan stok habis tidak bisa dipinjam
+  - Stok otomatis berkurang saat buku dipinjam
+  - Stok otomatis bertambah kembali saat status diubah menjadi "dikembalikan"
+  - Riwayat lengkap tanggal pinjam & tanggal kembali
+- Validasi form di setiap input
+- Pagination pada setiap daftar data
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## 🖼️ Screenshot
 
-## Learning Laravel
+<img width="1919" height="944" alt="image" src="https://github.com/user-attachments/assets/2d5b71b3-1661-4019-8012-23815f09d020" />
+<img width="1919" height="941" alt="image" src="https://github.com/user-attachments/assets/9395ef1a-84fb-469c-8a9a-36cbc4689828" />
+<img width="1917" height="938" alt="image" src="https://github.com/user-attachments/assets/7d116af2-17d4-456a-931b-240411c4d730" />
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+| Daftar Peminjaman | Tambah Peminjaman |
+|---|---|
+| ![Daftar Peminjaman](docs/screenshots/index-peminjaman.png) | ![Tambah Peminjaman](docs/screenshots/create-peminjaman.png) |
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
+## 🛠️ Tech Stack
 
-## Agentic Development
+- **Backend:** Laravel 10 (PHP 8.2)
+- **Database:** MySQL
+- **Frontend:** Blade Templating + Bootstrap 5
+- **Arsitektur:** MVC (Model-View-Controller)
 
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
+## 🗂️ Struktur Database (ERD)
 
-```bash
-composer require laravel/boost --dev
-
-php artisan boost:install
+```
+buku                     peminjaman                  anggota
+┌───────────────┐        ┌──────────────────┐        ┌───────────────┐
+│ id            │───┐    │ id               │    ┌───│ id            │
+│ kode_buku     │   └───▶│ buku_id (FK)     │    │   │ nama          │
+│ judul         │        │ anggota_id (FK)  │◀───┘   │ alamat        │
+│ penulis       │        │ tanggal_pinjam   │        │ no_telp       │
+│ penerbit      │        │ tanggal_kembali  │        │ email         │
+│ tahun_terbit  │        │ status           │        └───────────────┘
+│ stok          │        └──────────────────┘
+└───────────────┘
 ```
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+- Satu **buku** bisa punya banyak **peminjaman** (`hasMany`)
+- Satu **anggota** bisa punya banyak **peminjaman** (`hasMany`)
+- Satu **peminjaman** merujuk ke satu **buku** dan satu **anggota** (`belongsTo`)
 
-## Contributing
+## 🚀 Instalasi
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+```bash
+# 1. Clone repository
+git clone https://github.com/username/laravel-perpustakaan.git
+cd laravel-perpustakaan
 
-## Code of Conduct
+# 2. Install dependency
+composer install
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+# 3. Salin file environment
+cp .env.example .env
+php artisan key:generate
 
-## Security Vulnerabilities
+# 4. Atur koneksi database di .env
+DB_CONNECTION=mysql
+DB_DATABASE=perpustakaan
+DB_USERNAME=root
+DB_PASSWORD=
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+# 5. Buat database "perpustakaan" di MySQL, lalu jalankan migrasi
+php artisan migrate
 
-## License
+# 6. Jalankan server
+php artisan serve
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Buka `http://127.0.0.1:8000` di browser.
+
+## 📁 Struktur Project (bagian penting)
+
+```
+app/
+├── Models/                  # Buku, Anggota, Peminjaman
+└── Http/Controllers/        # Logic CRUD tiap modul
+database/migrations/         # Struktur tabel
+resources/views/             # Tampilan Blade per modul
+routes/web.php                # Definisi route
+```
+
+## 🗺️ Rencana Pengembangan
+
+- [ ] Autentikasi login untuk admin/petugas
+- [ ] Fitur pencarian & filter data
+- [ ] Denda keterlambatan pengembalian
+- [ ] Export laporan peminjaman ke Excel/PDF
+
+## 👤 Author
+
+**Nama Kamu**
+- GitHub: [@adisanjaya-pemula](https://github.com/adisanjaya-pemula)
+
+## 📄 Lisensi
+
+Project ini menggunakan lisensi [MIT](LICENSE).
